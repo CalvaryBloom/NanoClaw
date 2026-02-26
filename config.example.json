@@ -1,0 +1,24 @@
+{
+  "agent": {
+    "model": "openai/gpt-4o-mini",
+    "max_tokens": 4096,
+    "temperature": 0.7
+  },
+  "providers": {
+    "openrouter": {
+      "api_key": "YOUR_OPENROUTER_KEY_HERE",
+      "api_base": "https://openrouter.ai/api/v1"
+    },
+    "_anthropic_example": {
+      "api_key": "YOUR_ANTHROPIC_KEY_HERE"
+    },
+    "_openai_example": {
+      "api_key": "YOUR_OPENAI_KEY_HERE"
+    }
+  },
+  "tools": {
+    "web_search": {
+      "api_key": "YOUR_BRAVE_SEARCH_KEY_HERE"
+    }
+  }
+}
