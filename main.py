@@ -15,7 +15,7 @@ import sys
 
 
 CONFIG_PATH = os.path.expanduser("~/.nanoclaw/config.json")
-DEFAULT_CONFIG_PATH = "config.example.json"
+DEFAULT_CONFIG_PATH = "config.json"
 
 
 def load_config() -> dict:
