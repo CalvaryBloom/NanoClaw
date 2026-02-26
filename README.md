@@ -1,93 +1,136 @@
-# 🤖 NanoClaw
+# 🦐 NanoClaw
 
-> An ultra-extensible AI assistant written in Python.  
-> Inspired by [PicoClaw](https://github.com/sipeed/picoclaw) — built for maximum skill extensibility.
+> Un asistente de IA ultra-extensible escrito en Python.  
+> Inspirado en [PicoClaw](https://github.com/sipeed/picoclaw) — construido para máxima extensibilidad de skills.
 
-## ✨ What makes it different?
+## ✨ ¿Qué lo hace diferente?
 
-The core philosophy is **one file = one skill**. Drop a `.py` file in `/skills` and the agent discovers it automatically. No configuration needed.
+La filosofía central es **un archivo = un skill**. Añade un `.py` a `/skills` y el agente lo descubre automáticamente. Sin registros, sin configuración extra.
 
-| Feature | PicoClaw | NanoClaw |
+| | PicoClaw | NanoClaw |
 |---|---|---|
-| Language | Go | Python |
-| Skills system | Built-in | 🔌 Fully modular, plug-and-play |
-| Adding skills | Modify core | Just add a file to `/skills` |
-| Ecosystem | Minimal | Full Python ecosystem |
+| Lenguaje | Go | Python |
+| Sistema de skills | Integrado | 🔌 Modular, plug-and-play |
+| Añadir un skill | Modificar el core | Solo añadir un archivo a `/skills` |
+| Ecosistema | Mínimo | Todo el ecosistema Python |
 
-## 🚀 Quick Start
+---
 
-### 1. Install
+## 🚀 Instalación y configuración
+
+### 1. Clona el repositorio
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/nanoclaw
 cd nanoclaw
 pip install -r requirements.txt
 ```
 
-### 2. Configure
+### 2. Ejecuta el asistente de configuración
+
 ```bash
 python main.py --init
-# Then edit ~/.nanoclaw/config.json with your API keys
 ```
 
-Get free API keys:
-- **LLM**: [OpenRouter](https://openrouter.ai/keys) — 200K tokens/month free
-- **Search**: [Brave Search API](https://brave.com/search/api) — 2000 queries/month free
+El asistente te guiará paso a paso:
 
-### 3. Run
+```
+══════════════════════════════════════════════════
+  🦐 Bienvenido a NanoClaw!
+  Asistente de configuración
+══════════════════════════════════════════════════
+
+📡 PASO 1 — Proveedor de IA
+  👉 Consigue tu key gratis en: https://openrouter.ai/keys
+
+  ¿Qué proveedor quieres usar?
+  1. OpenRouter (recomendado)
+     Acceso a cientos de modelos. Tier gratuito disponible.
+  2. Anthropic (Claude)
+  3. OpenAI (ChatGPT)
+  4. Groq
+
+🤖 PASO 2 — Modelo de IA
+  1. openrouter/auto — Elige automáticamente el mejor disponible (recomendado)
+  2. openai/gpt-4o-mini — Rápido y barato
+  ...
+
+🔍 PASO 3 — Búsqueda web (opcional)
+  👉 Consigue tu key en: https://brave.com/search/api
+
+✅ ¡NanoClaw está listo!
+```
+
+### 3. ¡Úsalo!
+
 ```bash
-python main.py                   # Interactive mode
-python main.py -m "What time is it?"  # Single message
-python main.py --list-skills     # See all skills
+python main.py                        # Modo conversación
+python main.py -m "¿Qué hora es?"    # Mensaje rápido
+python main.py --list-skills          # Ver skills disponibles
 ```
 
-## 📦 Built-in Skills
+---
 
-| Skill | Description |
+## 🔑 API Keys necesarias
+
+| Servicio | Para qué | Tier gratuito | Enlace |
+|---|---|---|---|
+| **OpenRouter** | Modelo de IA (obligatorio) | 200K tokens/mes | [openrouter.ai/keys](https://openrouter.ai/keys) |
+| **Brave Search** | Búsqueda web (opcional) | 2000 búsquedas/mes | [brave.com/search/api](https://brave.com/search/api) |
+
+---
+
+## 📦 Skills incluidos
+
+| Skill | Descripción |
 |---|---|
-| `web_search` | Search the web via Brave Search API |
-| `file_manager` | Read, write, list, delete files in your workspace |
-| `code_runner` | Execute Python code and math expressions |
-| `task_manager` | Personal to-do list that persists between sessions |
-| `system_info` | Date/time, OS info, disk usage |
+| `web_search` | Búsqueda web via Brave Search API |
+| `file_manager` | Leer, escribir, listar y borrar archivos en tu workspace |
+| `code_runner` | Ejecutar código Python y expresiones matemáticas |
+| `task_manager` | Lista de tareas personal que persiste entre sesiones |
+| `system_info` | Fecha/hora, info del OS, uso de disco |
 
-## 🔧 Adding a New Skill
+---
 
-Create a file in `/skills/`. That's it.
+## 🔧 Cómo añadir un nuevo skill
+
+Crea un archivo en `/skills/`. Eso es todo.
 
 ```python
-# skills/my_skill.py
+# skills/mi_skill.py
 from core.base_skill import BaseSkill
 
-class MySkill(BaseSkill):
-    name = "my_skill"
-    description = "Does something awesome"
+class MiSkill(BaseSkill):
+    name = "mi_skill"
+    description = "Hace algo útil"
     args_schema = {
-        "input": "The input to process"
+        "input": "El texto a procesar"
     }
 
     def run(self, input: str) -> str:
-        return f"Processed: {input}"
+        return f"Resultado: {input}"
 ```
 
-The agent will discover and load it on next startup.
+El agente lo descarga y carga en el próximo arranque sin tocar nada más.
+
+---
 
 ## 🗺️ Roadmap
 
-- [ ] Telegram channel integration
-- [ ] Discord channel integration  
-- [ ] Memory / long-term notes skill
-- [ ] Weather skill
-- [ ] Email skill (via Gmail API)
-- [ ] Calendar skill (via Google Calendar)
-- [ ] RSS/news reader skill
-- [ ] URL summarizer skill
-- [ ] Image generation skill
+- [ ] Canal Telegram
+- [ ] Canal Discord
+- [ ] Skill de memoria / notas largas
+- [ ] Skill de clima
+- [ ] Skill de email (Gmail API)
+- [ ] Skill de calendario (Google Calendar)
+- [ ] Skill de resumen de URLs
+- [ ] Skill de generación de imágenes
 
-## 🤝 Contributing
+## 🤝 Contribuir
 
-PRs welcome! The codebase is intentionally small and readable.  
-Read [CONTRIBUTING.md](docs/CONTRIBUTING.md) before starting.
+Los PRs son bienvenidos. El código es intencionalmente pequeño y legible.  
+Lee [CONTRIBUTING.md](docs/CONTRIBUTING.md) antes de empezar.
 
-## 📄 License
+## 📄 Licencia
 
 MIT
