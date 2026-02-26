@@ -1,0 +1,19 @@
+# Config with API keys — NEVER commit this
+config.json
+*.env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# MyAgent workspace data
+~/.myagent/
+
+# OS
+.DS_Store
+Thumbs.db
